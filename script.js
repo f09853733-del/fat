@@ -1,125 +1,156 @@
 
+const planets = [
+  {
+    name: "عطارد",
+    en: "MERCURY",
+    color: "#b6b6bd",
+    glow: "#a9adb855",
+    ball: "radial-gradient(circle at 30% 25%, #dedee3, #747782 65%, #424653)",
+    diameter: "4,879 km",
+    year: "88 روز",
+    moons: "۰",
+    desc: "نزدیک‌ترین سیاره به خورشید؛ جهانی سنگی با نوسان دمای بسیار زیاد."
+  },
+  {
+    name: "زهره",
+    en: "VENUS",
+    color: "#e9b878",
+    glow: "#e9b87855",
+    ball: "radial-gradient(circle at 30% 25%, #fff0c9, #d69b56 55%, #855037)",
+    diameter: "12,104 km",
+    year: "225 روز",
+    moons: "۰",
+    desc: "جهانی پوشیده از ابرهای غلیظ که به دلیل اثر گلخانه‌ای بسیار داغ است."
+  },
+  {
+    name: "زمین",
+    en: "EARTH",
+    color: "#58bfff",
+    glow: "#58bfff66",
+    ball: "radial-gradient(circle at 30% 25%, #7ef7ff, #2876db 50%, #14513e)",
+    diameter: "12,742 km",
+    year: "365 روز",
+    moons: "۱",
+    desc: "خانه ما و تنها جهانی که تاکنون وجود حیات در آن تأیید شده است."
+  },
+  {
+    name: "مریخ",
+    en: "MARS",
+    color: "#f17863",
+    glow: "#f1786355",
+    ball: "radial-gradient(circle at 30% 25%, #ffc1a0, #d45b42 55%, #74332e)",
+    diameter: "6,779 km",
+    year: "687 روز",
+    moons: "۲",
+    desc: "سیاره سرخ با آتشفشان‌های عظیم، دره‌های عمیق و نشانه‌های آب باستانی."
+  },
+  {
+    name: "مشتری",
+    en: "JUPITER",
+    color: "#d6ad8b",
+    glow: "#d6ad8b55",
+    ball: "repeating-linear-gradient(0deg, #bd8964 0 7px, #f2d4ac 8px 14px, #8f5d4d 15px 19px)",
+    diameter: "139,820 km",
+    year: "11.86 سال",
+    moons: "۱۰۱+",
+    desc: "بزرگ‌ترین سیاره منظومه شمسی، با طوفان‌های عظیم و قمرهای شگفت‌انگیز."
+  },
+  {
+    name: "زحل",
+    en: "SATURN",
+    color: "#e5cc92",
+    glow: "#e5cc9255",
+    ball: "radial-gradient(circle at 30% 25%, #fff1bd, #d1ad6d 60%, #8d704b)",
+    ring: true,
+    diameter: "116,460 km",
+    year: "29.4 سال",
+    moons: "۲۷۴",
+    desc: "غول گازی مشهور به حلقه‌های درخشان که از ذرات یخ و سنگ ساخته شده‌اند."
+  },
+  {
+    name: "اورانوس",
+    en: "URANUS",
+    color: "#7ee9ed",
+    glow: "#7ee9ed55",
+    ball: "radial-gradient(circle at 30% 25%, #d4ffff, #70d4df 60%, #4389b2)",
+    diameter: "50,724 km",
+    year: "84 سال",
+    moons: "۲۹",
+    desc: "غول یخی آبی‌رنگ که محور چرخشش به‌شدت کج شده است."
+  },
+  {
+    name: "نپتون",
+    en: "NEPTUNE",
+    color: "#668cff",
+    glow: "#668cff66",
+    ball: "radial-gradient(circle at 30% 25%, #9bc8ff, #315be5 55%, #182c86)",
+    diameter: "49,244 km",
+    year: "165 سال",
+    moons: "۱۶",
+    desc: "جهانی دوردست و سرد با بادهایی بسیار سریع در جو آن."
+  }
+];
 
-const reduceMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
-).matches;
+const grid = document.getElementById("planetGrid");
+const details = {
+  name: document.getElementById("detailName"),
+  description: document.getElementById("detailDescription"),
+  diameter: document.getElementById("detailDiameter"),
+  year: document.getElementById("detailYear"),
+  moons: document.getElementById("detailMoons")
+};
 
-// انیمیشن نمایش عناصر هنگام اسکرول
-const revealElements = document.querySelectorAll(".reveal");
+function showPlanet(index) {
+  const planet = planets[index];
 
-if ("IntersectionObserver" in window && !reduceMotion) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
+  details.name.textContent = `${planet.name} | ${planet.en}`;
+  details.description.textContent = planet.desc;
+  details.diameter.textContent = planet.diameter;
+  details.year.textContent = planet.year;
+  details.moons.textContent = planet.moons;
+
+  document.querySelectorAll(".planet-card").forEach((card, i) => {
+    card.classList.toggle("active", i === index);
+    card.setAttribute("aria-pressed", String(i === index));
+  });
+
+  document.querySelector(".planet-count").textContent =
+    `${String(index + 1).padStart(2, "0")} — 08`;
+}
+
+planets.forEach((planet, index) => {
+  const card = document.createElement("button");
+  card.type = "button";
+  card.className = "planet-card";
+  card.style.setProperty("--planet-color", planet.color);
+  card.style.setProperty("--planet-glow", planet.glow);
+  card.setAttribute("aria-pressed", "false");
+  card.setAttribute("aria-label", `نمایش اطلاعات ${planet.name}`);
+
+  card.innerHTML = `
+    <div class="planet-art">
+      <div class="planet-ball ${planet.ring ? "ringed" : ""}"
+           style="--ball:${planet.ball}"></div>
+    </div>
+    <h3>${planet.name}</h3>
+    <p>${planet.en}</p>
+    <div class="card-bottom">
+      <span>قطر: ${planet.diameter}</span>
+      <span>مشاهده ↗</span>
+    </div>
+  `;
+
+  card.addEventListener("click", () => {
+    showPlanet(index);
+    document.getElementById("planetDetails").scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
     });
-  }, {
-    threshold: 0.12
   });
 
-  revealElements.forEach((element) => observer.observe(element));
-} else {
-  revealElements.forEach((element) => element.classList.add("visible"));
-}
-
-// افکت نور دنبال‌کننده موس
-const cursorGlow = document.querySelector(".cursor-glow");
-
-if (cursorGlow && !reduceMotion) {
-  window.addEventListener("pointermove", (event) => {
-    cursorGlow.style.left = `${event.clientX}px`;
-    cursorGlow.style.top = `${event.clientY}px`;
-  }, { passive: true });
-}
-
-// نمایش پنجره مشخصات ماشین
-const modal = document.getElementById("carModal");
-const closeModal = document.getElementById("closeModal");
-
-const modalTitle = document.getElementById("modalTitle");
-const modalSpeed = document.getElementById("modalSpeed");
-const modalPower = document.getElementById("modalPower");
-const modalPrice = document.getElementById("modalPrice");
-
-let lastFocusedElement = null;
-
-function openCarModal(card, button) {
-  lastFocusedElement = button;
-
-  modalTitle.textContent = card.dataset.name;
-  modalSpeed.textContent = card.dataset.speed;
-  modalPower.textContent = card.dataset.power;
-  modalPrice.textContent = card.dataset.price;
-
-  modal.hidden = false;
-  document.body.style.overflow = "hidden";
-  closeModal.focus();
-}
-
-function hideCarModal() {
-  modal.hidden = true;
-  document.body.style.overflow = "";
-
-  if (lastFocusedElement) {
-    lastFocusedElement.focus();
-  }
-}
-
-document.querySelectorAll(".details-btn").forEach((button) => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".car-card");
-    openCarModal(card, button);
-  });
+  grid.appendChild(card);
 });
 
-closeModal.addEventListener("click", hideCarModal);
+showPlanet(2);
 
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    hideCarModal();
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !modal.hidden) {
-    hideCarModal();
-  }
-});
-
-// تغییر ماشین اصلی با انتخاب کارت
-const heroCar = document.getElementById("heroCar");
-
-document.querySelectorAll(".car-card").forEach((card) => {
-  const image = card.querySelector(".car-image img");
-
-  image.addEventListener("click", () => {
-    heroCar.style.opacity = "0";
-    heroCar.style.transform = "translateY(12px) scale(.97)";
-
-    window.setTimeout(() => {
-      heroCar.src = image.src;
-      heroCar.alt = image.alt;
-
-      heroCar.onload = () => {
-        heroCar.style.opacity = "1";
-        heroCar.style.transform = "translateY(0) scale(1)";
-      };
-
-      // اگر تصویر از قبل در حافظه بارگذاری شده باشد
-      if (heroCar.complete && heroCar.naturalWidth > 0) {
-        heroCar.style.opacity = "1";
-        heroCar.style.transform = "translateY(0) scale(1)";
-      }
-    }, reduceMotion ? 0 : 220);
-  });
-});
-
-// تغییر نرم تصویر اصلی
-heroCar.style.transition = "opacity .25s, transform .25s";
-
-// نمایش افکت ورود اولیه
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
-});
+const missionMessages = [

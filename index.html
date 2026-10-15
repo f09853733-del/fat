@@ -1,221 +1,109 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080909">
-  <title>APEX | Supercars</title>
+  <meta name="theme-color" content="#050816">
+  <meta name="description" content="با Cosmos Explorer به کاوش سیاره‌ها و شگفتی‌های جهان بپردازید.">
+  <title>COSMOS EXPLORER | کاوشگر جهان</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <div class="loader" id="loader">
-    <div class="loader-logo">APEX<span>.</span></div>
-    <div class="loader-line"><span></span></div>
-    <p>ENTER THE WORLD OF SPEED</p>
-  </div>
-
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
+  <div class="stars" aria-hidden="true"></div>
 
   <header class="navbar">
-    <a href="#" class="logo">APEX<span>.</span></a>
-
+    <a class="logo" href="#">COSMOS<span>.</span></a>
     <nav>
       <a href="#home">خانه</a>
-      <a href="#collection">کلکسیون</a>
-      <a href="#experience">تجربه APEX</a>
+      <a href="#planets">سیاره‌ها</a>
+      <a href="#mission">مأموریت</a>
     </nav>
-
-    <a href="#collection" class="nav-cta">کشف خودروها ↗</a>
-    <button class="menu-toggle" id="menuToggle" aria-label="باز کردن منو">☰</button>
+    <a href="#planets" class="nav-btn">شروع کاوش ↗</a>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="hero-copy reveal">
+      <div class="hero-content">
         <div class="eyebrow">
-          <span class="status-dot"></span>
-          BEYOND ORDINARY
+          <span class="live-dot"></span>
+          سیستم کاوش فضایی فعال است
         </div>
 
-        <h1>سرعت را<br> <span>زندگی کن.</span></h1>
+        <h1>فراتر از<br> <span>مرزهای جهان</span></h1>
 
-        <p class="hero-description">
-          جایی که مهندسی بی‌نقص، طراحی خیره‌کننده
-          و قدرت خام، به یک تجربه فراموش‌نشدنی تبدیل می‌شوند.
+        <p>
+          به ناشناخته‌ها سفر کن؛ از سیاره‌های شگفت‌انگیز
+          تا رازهای بی‌پایان کهکشان.
+          جهان منتظر کشف شدن است.
         </p>
 
         <div class="hero-actions">
-          <a href="#collection" class="button button-primary">
-            کشف کلکسیون <span>↙</span>
-          </a>
-          <a href="#experience" class="button button-ghost">
-            دنیای APEX
-          </a>
+          <a href="#planets" class="primary-btn">🚀 شروع مأموریت</a>
+          <a href="#mission" class="secondary-btn">درباره کاوش ←</a>
         </div>
 
-        <div class="hero-stats">
-          <div>
-            <strong>350<span>+</span></strong>
-            <small>KM/H سرعت</small>
-          </div>
-          <div>
-            <strong>2.5<span>s</span></strong>
-            <small>شتاب صفر تا صد</small>
-          </div>
-          <div>
-            <strong>V12</strong>
-            <small>قدرت خالص</small>
-          </div>
+        <div class="stats">
+          <div><strong>۸</strong><span>سیاره اصلی منظومه شمسی</span></div>
+          <div><strong>۱۰۰B+</strong><span>کهکشان تخمینی در جهان قابل مشاهده</span></div>
+          <div><strong>∞</strong><span>راز کشف‌نشده</span></div>
         </div>
       </div>
 
-      <div class="hero-visual reveal">
-        <div class="visual-label">01 / THE ART OF SPEED</div>
-
-        <div class="car-glow"></div>
-        <div class="speed-ring"></div>
-
-        <img
-          id="heroCar"
-          class="hero-car"
-          src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1500&q=90"
-          alt="خودروی اسپرت لوکس"
-        >
-
-        <div class="car-caption">
-          <span>PRECISION ENGINEERING</span>
-          <span>EST. FOR THE BOLD</span>
-        </div>
-
-        <div class="floating-badge">
-          <span>MAX SPEED</span>
-          <strong id="heroSpeed">330 <small>KM/H</small></strong>
-        </div>
-      </div>
-
-      <div class="hero-bottom">
-        <span>01 — PERFORMANCE</span>
-        <span class="scroll-indicator">SCROLL TO EXPLORE ↓</span>
-        <span>BUILT DIFFERENT.</span>
+      <div class="solar-system" aria-label="نمای گرافیکی منظومه شمسی">
+        <div class="orbit orbit-one"><i class="planet mercury"></i></div>
+        <div class="orbit orbit-two"><i class="planet venus"></i></div>
+        <div class="orbit orbit-three"><i class="planet earth"></i></div>
+        <div class="orbit orbit-four"><i class="planet mars"></i></div>
+        <div class="orbit orbit-five"><i class="planet jupiter"></i></div>
+        <div class="sun"></div>
+        <div class="space-label">SOLAR SYSTEM <span>01 / 08</span></div>
       </div>
     </section>
 
-    <section class="collection section" id="collection">
-      <div class="section-heading reveal">
+    <section class="planets-section" id="planets">
+      <div class="section-heading">
         <div>
-          <div class="eyebrow">THE COLLECTION / 2026</div>
-          <h2>انتخاب کن.<br><span>تسلط پیدا کن.</span></h2>
+          <span class="section-tag">DATABASE / PLANETS</span>
+          <h2>مقصد بعدی تو کجاست؟</h2>
+          <p>یک جهان را انتخاب کن و اطلاعاتش را کشف کن.</p>
         </div>
-        <p>هر خودرو یک شاهکار مهندسی است.<br>کدام‌یک ضربان قلبت را بالا می‌برد؟</p>
+        <span class="planet-count">۰۱ — ۰۸</span>
       </div>
 
-      <div class="car-showcase reveal">
-        <div class="showcase-image">
-          <div class="image-grid"></div>
-          <img id="showcaseCar"
-            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1500&q=90"
-            alt="خودروی انتخاب‌شده">
+      <div class="planet-grid" id="planetGrid"></div>
 
-          <div class="image-tag">APEX EXCLUSIVE</div>
-          <div class="image-number" id="carNumber">01</div>
+      <div class="planet-details" id="planetDetails" aria-live="polite">
+        <span class="section-tag">MISSION INTEL</span>
+        <h3 id="detailName">زمین | خانه ما</h3>
+        <p id="detailDescription">
+          سیاره‌ای که تاکنون تنها میزبان شناخته‌شده حیات است.
+        </p>
+        <div class="detail-facts">
+          <div><span>قطر</span><strong id="detailDiameter">12,742 km</strong></div>
+          <div><span>سال سیاره</span><strong id="detailYear">365 روز</strong></div>
+          <div><span>قمر شناخته‌شده</span><strong id="detailMoons">۱</strong></div>
         </div>
-
-        <div class="showcase-info">
-          <span class="eyebrow">ENGINEERED TO THRILL</span>
-          <h3 id="carName">PORSCHE 911</h3>
-          <p id="carDescription">
-            ترکیبی بی‌نظیر از اصالت، مهندسی و هیجان رانندگی.
-          </p>
-
-          <div class="spec-grid">
-            <div class="spec">
-              <span>قدرت موتور</span>
-              <strong id="carPower">388 <small>HP</small></strong>
-            </div>
-            <div class="spec">
-              <span>شتاب ۰ تا ۱۰۰</span>
-              <strong id="carAccel">4.1 <small>S</small></strong>
-            </div>
-            <div class="spec">
-              <span>حداکثر سرعت</span>
-              <strong id="carMaxSpeed">295 <small>KM/H</small></strong>
-            </div>
-          </div>
-
-          <div class="color-title">رنگ بدنه را انتخاب کن</div>
-          <div class="color-options">
-            <button class="color-dot active" data-color="white"
-              style="--swatch:#e7e5df" aria-label="سفید"></button>
-            <button class="color-dot" data-color="red"
-              style="--swatch:#ed3434" aria-label="قرمز"></button>
-            <button class="color-dot" data-color="blue"
-              style="--swatch:#448cff" aria-label="آبی"></button>
-            <button class="color-dot" data-color="gold"
-              style="--swatch:#c9a45d" aria-label="طلایی"></button>
-          </div>
-
-          <button id="detailsButton" class="button button-primary details-button">
-            مشاهده مشخصات <span>↗</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="car-selector">
-        <button class="car-option active" data-car="0">
-          <span>01</span>
-          <strong>PORSCHE 911</strong>
-          <span>↗</span>
-        </button>
-        <button class="car-option" data-car="1">
-          <span>02</span>
-          <strong>LAMBORGHINI</strong>
-          <span>↗</span>
-        </button>
-        <button class="car-option" data-car="2">
-          <span>03</span>
-          <strong>MCLAREN</strong>
-          <span>↗</span>
-        </button>
       </div>
     </section>
 
-    <section class="experience section" id="experience">
-      <div class="experience-content reveal">
-        <div class="eyebrow">NOT JUST A CAR. AN OBSESSION.</div>
-        <h2>قوانین را<br><span>دوباره تعریف کن.</span></h2>
-        <p>
-          بعضی خودروها فقط حرکت می‌کنند؛
-          بعضی دیگر، تعریف تو از رانندگی را تغییر می‌دهند.
-        </p>
-        <a href="#home" class="button button-primary">بازگشت به اوج ↑</a>
-      </div>
-      <div class="experience-orbit">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="orbit-core">A<span>.</span></div>
-        <div class="orbit-caption">POWER / PASSION / PRECISION</div>
-      </div>
+    <section class="mission" id="mission">
+      <div class="mission-orb">✦</div>
+      <span class="section-tag">YOUR NEXT ADVENTURE</span>
+      <h2>جهان هنوز پر از راز است.</h2>
+      <p>هر کلیک، قدمی تازه به سوی ناشناخته‌هاست.</p>
+      <button class="primary-btn" id="missionBtn">آغاز کاوش جدید ↗</button>
+      <p class="mission-message" id="missionMessage" aria-live="polite"></p>
     </section>
   </main>
 
   <footer>
-    <a href="#home" class="logo">APEX<span>.</span></a>
-    <p>برای کسانی که معمولی بودن را انتخاب نمی‌کنند.</p>
-    <span>© 2026 APEX SUPERCARS</span>
+    <a class="logo" href="#home">COSMOS<span>.</span></a>
+    <p>ساخته‌شده برای کنجکاوان جهان · ۲۰۲۶</p>
+    <a href="#home">بازگشت به بالا ↑</a>
   </footer>
-
-  <dialog id="carDialog" class="car-dialog">
-    <button id="closeDialog" class="dialog-close" aria-label="بستن">✕</button>
-    <div class="eyebrow">APEX VEHICLE PROFILE</div>
-    <h2 id="dialogTitle">PORSCHE 911</h2>
-    <p id="dialogText"></p>
-    <p class="dialog-note">مشخصات نمایش‌داده‌شده نمونه هستند و بسته به تیپ خودرو تفاوت دارند.</p>
-  </dialog>
 
   <script src="script.js"></script>
 </body>
